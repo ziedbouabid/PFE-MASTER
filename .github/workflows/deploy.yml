@@ -16,9 +16,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: |
-            test1/package-lock.json
-            ERP/package-lock.json
+          cache-dependency-path: '**/package-lock.json'
 
       # Backend CI Steps
       - name: Install backend dependencies
