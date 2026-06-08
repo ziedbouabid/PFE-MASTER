@@ -30,34 +30,34 @@
         </ion-label>
       </ion-item>
       <ion-item
-        *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')||(this.userService.userinfos?.role == 'RSCM')||(this.userService.userinfos?.role == 'CHCM')">
+        *ngIf="(this.userService.userinfos?.role === 'Admin')||(this.userService.userinfos?.role === 'RSPLA')||(this.userService.userinfos?.role === 'CHPLA')||(this.userService.userinfos?.role === 'RSCM')||(this.userService.userinfos?.role === 'CHCM')">
         <ion-icon slot="start" name="calendar-outline"></ion-icon>
         <ion-label class="menu_items" (click)="goToGestionMisson()">
           Gestion des missions
         </ion-label>
       </ion-item>
       <ion-item
-        *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')">
+        *ngIf="(this.userService.userinfos?.role === 'Admin')||(this.userService.userinfos?.role === 'RSPLA')||(this.userService.userinfos?.role === 'CHPLA')">
         <ion-icon slot="start" name="people-outline"></ion-icon>
         <ion-label class="menu_items" (click)="goToGestionFournisseurs()">
           Gestion des fournisseurs
         </ion-label>
       </ion-item>
-      <ion-item *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSRH')||(this.userService.userinfos?.role == 'CHRH')">
+      <ion-item *ngIf="(this.userService.userinfos?.role === 'Admin')||(this.userService.userinfos?.role === 'RSRH')||(this.userService.userinfos?.role === 'CHRH')">
         <ion-icon slot="start" name="people-outline"></ion-icon>
         <ion-label (click)="goCharcherPLN()" class="menu_items">
           Gestion des employés 
         </ion-label>
       </ion-item>
       <ion-item
-      *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')||(this.userService.userinfos?.role == 'RSCM')||(this.userService.userinfos?.role == 'CHCM')">
+      *ngIf="(this.userService.userinfos?.role === 'Admin')||(this.userService.userinfos?.role === 'RSPLA')||(this.userService.userinfos?.role === 'CHPLA')||(this.userService.userinfos?.role === 'RSCM')||(this.userService.userinfos?.role === 'CHCM')">
       <ion-icon slot="start" name="calendar-outline"></ion-icon>
       <ion-label class="menu_items" (click)="goToGestionCommande()">
         Gestion des commandes
       </ion-label>
     </ion-item>
 
-      <ion-item *ngIf="this.userService.userinfos?.role=='Admin'|| this.userService.userinfos?.role=='CHRH' || this.userService.userinfos?.role=='RSRH'">
+      <ion-item *ngIf="this.userService.userinfos?.role==='Admin'|| this.userService.userinfos?.role==='CHRH' || this.userService.userinfos?.role==='RSRH'">
         <ion-icon slot="start" name="pencil-outline"></ion-icon>
         <ion-label class="menu_items" (click)="goToCreateUser()">
           Creation compte
