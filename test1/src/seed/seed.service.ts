@@ -36,7 +36,7 @@ export class SeedService {
       const fournisseurs = await this.fournisseurRepository.find();
       console.log(fournisseurs[0]);
       
-      let editedCompetenceData = competenceData.map((c, i) => {
+      const editedCompetenceData = competenceData.map((c, i) => {
         const randomIndex = Math.floor(Math.random() * fournisseurs.length); // Random index
         const fournisseur = fournisseurs[randomIndex];
         return ({ ...c, fournisseur: fournisseur })

@@ -53,7 +53,7 @@ export class UsersService {
 
 
   async updateUser(user: User) {
-    let fields: any = {}
+    const fields: any = {}
     if (user.statut) fields.statut = user.statut
     if (user.prenom) fields.prenom = user.prenom
     if (user.tele) fields.tele = user.tele
