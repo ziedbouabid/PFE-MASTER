@@ -1,0 +1,113 @@
+<app-header [title]="titre"></app-header>
+<ion-content contentId="tt1">
+
+  <ion-card style="padding: 1em;height: 90%;">
+    <ion-col>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label class="label-item" color="primary">Nom :</ion-label>
+          <ion-input
+            [errorText]="nom.errors?.['required'] ? 'Le nom est obligatoire' : nom.errors?.['minlength'] ? 'Le nom doit contenir au moins 2 caractères' : ''"
+            min="2" minlength="2" fill="outline" class="input-item" [(ngModel)]="user.nom" type="text" clearInput
+            #nom="ngModel"></ion-input>
+          <span slot="error" *ngIf="nom.invalid && (nom.dirty || nom.touched)">
+            <span *ngIf="nom.errors?.['required']">
+              Le nom est obligatoire
+            </span>
+            <span *ngIf="nom.errors?.['minlength']">
+              Le nom doit contenir au moins 2 caractères
+            </span>
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-item" color="primary">prenom :</ion-label>
+          <ion-input
+            [errorText]="prenom.errors?.['required'] ? 'Le prenom est obligatoire' : prenom.errors?.['minlength'] ? 'Le prenom doit contenir au moins 2 caractères' : ''"
+            min="2" minlength="2" fill="outline" class="input-item" [(ngModel)]="user.prenom" type="text" clearInput
+            #prenom="ngModel"></ion-input>
+          <span slot="error" *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)">
+            <span *ngIf="prenom.errors?.['required']">
+              Le prenom est obligatoire
+            </span>
+            <span *ngIf="prenom.errors?.['minlength']">
+              Le prenom doit contenir au moins 2 caractères
+            </span>
+          </span>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Email :</ion-label>
+          <ion-input [errorText]="email.errors?.['required'] ? 'Email est obligatoire' : 'Adresse mail invalide' "
+            required email="true" type="email" type="text" class="input-item" [(ngModel)]="user.email" #email="ngModel"
+            clearInput></ion-input>
+          <span slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.['required']">
+              L'email est obligatoire
+            </span>
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-item" color="primary">Mot de passe :</ion-label>
+          <ion-input [errorText]="password.errors?.['required'] ? 'Mot de passe est obligatoire' :''  " required
+            placeholder="Mot de passe" type="password" class="input-item" [(ngModel)]="user.password"
+            #password="ngModel" clearInput></ion-input>
+          <span slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <span *ngIf="password.errors?.['required']">
+              Le mot de passe est obligatoire
+            </span>
+          </span>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label class="label-item" color="primary">Téléphone :</ion-label>
+          <ion-input [errorText]="tele.errors?.['required'] ? 'Le numéro de téléphone est obligatoire' : tele.errors?.['minlength'] ? 'Le numéro de téléphone doit contenir au moins 8 chiffres' : ''"
+            inputmode="numeric" pattern="[0-9]*" type="tel" minlength="8" class="input-item" [(ngModel)]="user.tele" clearInput #tele="ngModel"></ion-input>
+          <span slot="error" *ngIf="tele.errors?.['minlength']">
+            Le numéro de téléphone doit contenir au moins 8 chiffres
+          </span>
+        </ion-item> -->
+        <ion-item>
+          <ion-label class="label-item" color="primary">Email personnel :</ion-label>
+          <ion-input [errorText]="email.errors?.['required'] ? 'Email est obligatoire' : 'Adresse mail invalide' "
+            required email="true" type="email" type="text" class="input-item" 
+            clearInput></ion-input>
+          <span slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.['required']">
+              L'email est obligatoire
+            </span>
+          </span>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Téléphone :</ion-label>
+          <ion-input [errorText]="tele.errors?.['required'] ? 'Le numéro de téléphone est obligatoire' : tele.errors?.['minlength'] ? 'Le numéro de téléphone doit contenir au moins 8 chiffres' : tele.errors?.['pattern'] ? 'Le numéro de téléphone doit contenir exactement 8 chiffres et espaces' : ''"
+            type="NUMBER" minlength="8" class="input-item" [(ngModel)]="user.tele" clearInput [formControl]="tele"></ion-input>
+          
+          <span slot="error" *ngIf="tele.errors?.['pattern']">
+            Le numéro de téléphone doit contenir exactement 8 chiffres 
+          </span>
+        </ion-item>
+        
+        
+        <ion-item>
+          <ion-select class="label-item" style="font-family:klavika_light_italic;" label="Role" interface="action-sheet"
+            placeholder="Choisir un role" cancelText="Annuler" [(ngModel)]="this.user.role">
+            <ion-select-option style="font-family:klavika_light_italic;"
+              *ngFor="let role of ['Admin','RSPLA','CHPLA','RSCM','CHCM','RSRH','CHRH'];" [value]="role">{{role}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+      </ion-list>
+    </ion-col>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button (click)="saveUser()" style="width: 100%;height: 1cm;" name="accepter"
+          type="submit" class="submit-button_accepter" color="success">Enregistrer</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

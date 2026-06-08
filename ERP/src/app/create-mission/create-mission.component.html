@@ -1,0 +1,97 @@
+<app-header [title]="titre"></app-header>
+<ion-content contentId="tt1">
+
+  <ion-card style="padding: 1em;height: 90%;">
+    <ion-col>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label class="label-item" color="primary">Client :</ion-label>
+          <ion-input
+            [errorText]="client.errors?.['required'] ? 'Le client est obligatoire' : client.errors?.['minlength'] ? 'Le client doit contenir au moins 2 caractères' : ''"
+            min="2" minlength="2" fill="outline" class="input-item" [(ngModel)]="mission.client" type="text" clearInput
+            #client="ngModel"></ion-input>
+          <span slot="error" *ngIf="client.invalid && (client.dirty || client.touched)">
+            <span *ngIf="client.errors?.['required']">
+              Le  client est obligatoire
+            </span>
+            <span *ngIf="client.errors?.['minlength']">
+              Le client doit contenir au moins 2 caractères
+            </span>
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-item" color="primary">type:</ion-label>
+          <ion-input
+            [errorText]="type.errors?.['required'] ? 'Le type est obligatoire' : type.errors?.['minlength'] ? 'Le type doit contenir au moins 2 caractères' : ''"
+            min="2" minlength="2" fill="outline" class="input-item" [(ngModel)]="mission.type" type="text" clearInput
+            #type="ngModel"></ion-input>
+          <span slot="error" *ngIf="type.invalid && (type.dirty || type.touched)">
+            <span *ngIf="type.errors?.['required']">
+              Le type est obligatoire
+            </span>
+            <span *ngIf="type.errors?.['minlength']">
+              Le type doit contenir au moins 2 caractères
+            </span>
+          </span>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">description :</ion-label>
+          <ion-input [errorText]="description.errors?.['required'] ? 'description est obligatoire' : 'Adresse mail invalide' "
+            required description="true" type="text" type="text" class="input-item" [(ngModel)]="mission.description" #description="ngModel"
+            clearInput></ion-input>
+          <span slot="error" *ngIf="description.invalid && (description.dirty || description.touched)">
+            <span *ngIf="description.errors?.['required']">
+              L'description est obligatoire
+            </span>
+          </span>
+        </ion-item>
+
+       
+        <ion-item>
+          <ion-label class="label-item" color="primary">datedebut :</ion-label>
+          <ion-input type="date" class="input-item" [(ngModel)]="mission.datedebut" clearInput ></ion-input>
+         
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">datefin :</ion-label>
+          <ion-input type="date" class="input-item" [(ngModel)]="mission.datefin" clearInput ></ion-input>
+         
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Produit :</ion-label>
+          <ion-input
+            [errorText]="produit.errors?.['required'] ? 'Le produit est obligatoire' : produit.errors?.['minlength'] ? 'Le produit doit contenir au moins 2 caractères' : ''"
+            min="2" minlength="2" fill="outline" class="input-item" [(ngModel)]="mission.produit" type="text" clearInput
+            #produit="ngModel"></ion-input>
+          <span slot="error" *ngIf="produit.invalid && (produit.dirty || produit.touched)">
+            <span *ngIf="produit.errors?.['required']">
+              Le  produit est obligatoire
+            </span>
+            <span *ngIf="produit.errors?.['minlength']">
+              Le produit doit contenir au moins 2 caractères
+            </span>
+          </span>
+        </ion-item>
+        
+        
+        <ion-item>
+          <ion-label class="label-item" color="primary">Statut :</ion-label>
+          <ion-input type="text" class="input-item" [value]="mission.statut" readonly clearInput ></ion-input>
+        </ion-item>
+        
+      </ion-list>
+    </ion-col>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button (click)="saveMission()" style="width: 100%;height: 1cm;" name="accepter"
+          type="submit" class="submit-button_accepter" color="success">Enregistrer</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

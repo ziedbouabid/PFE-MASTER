@@ -1,0 +1,52 @@
+<app-header [title]="titre"></app-header>
+<ion-content  contentId="tt1"  >
+
+  <ion-segment value="white" scrollable style="margin-top: 1em;margin-left: 1em;margin-right: 1em;">
+
+    <ion-segment-button (click)="filterCommandes(null)" value="Tous">
+      <ion-label class="label_filer">Tous</ion-label>
+    </ion-segment-button >
+
+    <ion-segment-button (click)="filterCommandes('Accepté')" value="Commandes_accpter">
+      <ion-label class="label_filer">Accepté</ion-label>
+    </ion-segment-button >
+
+    <ion-segment-button (click)="filterCommandes('en attente')" value="Commandes_en_attente">
+      <ion-label class="label_filer">En attente</ion-label>
+    </ion-segment-button >
+  </ion-segment>
+
+  <ion-list  style="margin-bottom: 20%;">
+    <ion-card *ngFor="let Commande of commandes" (click)="goToCommande(Commande)" style="padding: 1em;">
+
+        <ion-row style="width: 100%;height: 50%;">
+          <ion-col  size-md="4" size-lg="4" size-xs="4"   style="height: 100%;" class="padding_col" >
+            <ion-label class="label_card_title">Description :</ion-label>
+            <br/>
+            <ion-text class="label_card_content" >{{Commande.description}}</ion-text>
+          </ion-col>
+          <ion-col *ngIf="Commande?.mission?.client" size-md="4" size-lg="4" size-xs="4"  style="height: 100%;" class="padding_col" >
+            <ion-label class="label_card_title">Client :</ion-label>
+            <br/>
+            <ion-text class="label_card_content" >{{Commande?.mission?.client}}</ion-text>
+          </ion-col>
+          <ion-col *ngIf="Commande?.mission?.statut"  size-md="4" size-lg="4" size-xs="4"   style="height: 100%;" class="padding_col" >
+            <ion-label class="label_card_title">Statut :</ion-label>
+            <br/>
+            <ion-text class="label_card_content" [ngStyle]="{'color': Commande?.mission?.statut==='Accepté' ?  'green': 'red' }">{{Commande?.mission?.statut}}</ion-text>
+          </ion-col>
+        </ion-row >
+
+    </ion-card>
+  </ion-list>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button *ngIf="(this.userService.userinfos?.role==='CHCM' ||this.userService.userinfos?.role==='RSCM' || this.userService.userinfos?.role==='Admin' )" (click)="goToCreateCommande()" style="width: 100%;height: 1cm;" name="accepter" type="submit" class="submit-button_accepter" color="success">Creation Commande</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

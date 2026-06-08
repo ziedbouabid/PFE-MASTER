@@ -1,0 +1,55 @@
+<app-header [title]="titre"></app-header>
+<ion-content contentId="tt1">
+
+  <ion-card style="padding: 1em;">
+    <ion-list>
+      <ion-item>
+        <ion-label class="label-item" color="primary">Nom :</ion-label>
+        <ion-input type="text" class="input-item" [(ngModel)]="employe.nom" clearInput>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label-item" color="primary">Prenom :</ion-label>
+        <ion-input type="text" class="input-item" [(ngModel)]="employe.prenom" clearInput>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label-item" color="primary">Tel :</ion-label>
+        <ion-input type="number" class="input-item" [(ngModel)]="employe.tele" clearInput>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select class="label-item" color="primary" label="Statut" interface="action-sheet"
+          placeholder="Choisir un statut" cancelText="Annuler" [(ngModel)]="employe.statut">
+          <ion-select-option *ngFor="let statut of ['Activé','Désactivé'];" [value]="statut">
+            {{statut}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select class="label-item" style="font-family:klavika_light_italic;" label="Role" interface="action-sheet"
+          placeholder="Choisir un role" cancelText="Annuler" [(ngModel)]="employe.role">
+          <ion-select-option style="font-family:klavika_light_italic;"
+            *ngFor="let role of ['Admin','RSPLA','CHPLA','RSCM','CHCM','RSRH','CHRH'];" [value]="role">{{role}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button *ngIf="(this.userService.userinfos?.role==='Admin'||this.userService.userinfos?.role==='CHRH' || this.userService.userinfos?.role==='RSRH'  )" (click)="updateUser()" style="width: 100%;height: 1cm;" name="accepter" type="submit"
+          class="submit-button_accepter" color="success">
+          Modifier</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-footer>

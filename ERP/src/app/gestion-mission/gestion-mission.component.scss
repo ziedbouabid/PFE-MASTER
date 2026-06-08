@@ -1,0 +1,69 @@
+ion-button {
+    --border-radius: 0px;
+}
+.btn_en_accepte{
+    float: right;
+    --margin: 0 !important;
+    width: 90%;
+    height: 1cm;
+    font-family: Cursive;
+    font-size:medium;
+
+
+}
+.btn_en_attente{
+    float: left;
+    width: 90%;
+    height: 1cm;
+    font-family: Cursive;
+    font-size:medium;
+}
+
+ion-col{
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    --padding-top: 0 !important;
+    --padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    --margin-left: 0 !important;
+    --margin-right: 0 !important;
+
+}
+
+
+ion-text-center{
+    height: 50%;
+}
+
+.vcenter{
+   height: 50%;
+  }
+
+
+
+
+.submit-button {
+  position: fixed;
+  left: 10%;
+  bottom: 10px;
+  right: 10%;
+  height: 1cm;
+  color: rgba(0,140,255,1);
+  font-family: Cursive;
+  font-size:medium;
+}
+
+.label_card_title{
+  font-family: klavika_bold_italic;
+  font-size:small;
+  color: rgba(0,140,255,1);
+}
+
+.label_card_content{
+  font-family: klavika_light_italic;
+  font-size:small;
+  color: black;
+}

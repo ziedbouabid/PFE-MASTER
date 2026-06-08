@@ -1,0 +1,80 @@
+<app-header [title]="titre"></app-header>
+<ion-content contentId="tt1">
+  <ion-card style="padding: 1em;">
+  <ion-list>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Fournisseur :</ion-label>
+          <ion-input type="text"  class="input-item" [(ngModel)]="fournisseur.nom" clearInput></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Description :</ion-label>
+          <ion-input type="text"   class="input-item" [(ngModel)]="fournisseur.description" clearInput></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Email    :</ion-label>
+          <ion-input type="text" class="input-item" [(ngModel)]="fournisseur.email" clearInput></ion-input>
+        </ion-item>
+  </ion-list>
+  </ion-card>
+
+  <ion-card style="padding: 1em;">
+  <ion-list>
+          <ion-item>
+            <ion-label class="label-item" color="primary">Certification :</ion-label>
+          </ion-item>
+          <ion-item *ngFor="let certif of this.fournisseur.certifications;let index = index;">
+            <ion-icon name="remove" (click)="supprimerCertification(index)" size="small" style="background-color: red;" slot="start"></ion-icon>
+            <ion-input type="text" class="input-item" [(ngModel)]="this.fournisseur.certifications[index].type" clearInput></ion-input>
+          </ion-item>
+          <br/>
+          <span
+          class="label-item"
+              ion-button
+              float-left
+              icon-left
+              clear
+              (click)="this.ajouterCertification()">
+                 <ion-icon name="add"></ion-icon>
+                 AJOUTER
+           </span>
+
+  </ion-list>
+  </ion-card>
+
+
+  <ion-card style="padding: 1em;">
+    <ion-list>
+            <ion-item>
+              <ion-label class="label-item" color="primary">Compétences :</ion-label>
+            </ion-item>
+            <ion-item *ngFor="let competence of this.fournisseur.competences;let index = index;">
+              <ion-icon name="remove" (click)="supprimerCompetence(index)" size="small" style="background-color: red;"  slot="start"></ion-icon>
+              <ion-input class="input-item" type="text"  [(ngModel)]="this.fournisseur.competences[index].type" clearInput></ion-input>
+            </ion-item>
+            <br/>
+            <span
+            class="label-item"
+            ion-button
+            float-left
+            icon-left
+            clear
+            (click)="this.ajouterCompetence()">
+               <ion-icon name="add"></ion-icon>
+               AJOUTER
+         </span>
+
+    </ion-list>
+    </ion-card>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button *ngIf="(this.userService.userinfos?.role==='RSPLA' || this.userService.userinfos?.role==='Admin' )" (click)="saveFournisseur()" style="width: 100%;height: 1cm;" name="accepter" type="submit" class="submit-button_accepter" color="success">Modifier</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,87 @@
+<app-header [title]="titre"></app-header>
+<ion-content contentId="tt1">
+
+  <ion-card style="padding: 1em;height: 90%;">
+    <ion-col>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label class="label-item" color="primary">Titre :</ion-label>
+          <ion-input
+            [errorText]="description.errors?.['required'] ? 'description est obligatoire' : 'Adresse mail invalide' "
+            required description="true" type="text" type="text" class="input-item" [(ngModel)]="commande.description"
+            #description="ngModel" clearInput></ion-input>
+          <span slot="error" *ngIf="description.invalid && (description.dirty || description.touched)">
+            <span *ngIf="description.errors?.['required']">
+              L'description est obligatoire
+            </span>
+          </span>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-select style="font-family:klavika_light_italic;" [multiple]="false" interface="action-sheet"
+          placeholder="Choisir missions" cancelText="Annuler" [(ngModel)]="selectedMission"
+          (ngModelChange)="onSelectChange($event)">
+          >
+          <ion-select-option style="font-family:klavika_light_italic;" *ngFor="let mission of this.missions;"
+            [value]="mission">{{mission.description}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-card *ngIf="selectedMission?.id">
+      <ion-list>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Client :</ion-label>
+          <ion-input class="input-item" fill="outline" [readonly]="true" [value]="selectedMission.client" type="text"
+            clearInput></ion-input>
+        </ion-item>
+                <ion-item>
+          <ion-label class="label-item" color="primary">Statut :</ion-label>
+          <ion-input class="input-item" fill="outline" [ngStyle]="{'color': selectedMission.statut==='Accepté' ?  'green': 'red' }" [readonly]="true" [value]="selectedMission.statut" type="text"
+            clearInput></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Type :</ion-label>
+          <ion-input type="text" class="input-item" [readonly]="true" [value]="selectedMission.type" clearInput>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Déscription :</ion-label>
+          <ion-input type="text" class="input-item" [readonly]="true" [value]="selectedMission.description" clearInput>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-item" color="primary">Date debut :</ion-label>
+          <ion-input type="text" class="input-item" [readonly]="true"
+            [value]="selectedMission.datedebut | date: 'shortDate'" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-item" color="primary">Date fin :</ion-label>
+          <ion-input type="text" class="input-item" [readonly]="true"
+            [value]="selectedMission.datefin | date: 'shortDate'" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-item" color="primary">Produits :</ion-label>
+          <ion-input type="text" class="input-item" [readonly]="true" [value]="selectedMission.produit" clearInput>
+          </ion-input>
+        </ion-item>
+
+
+      </ion-list>
+    </ion-card>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-row>
+      <ion-col size-md="12" size-lg="12" size-xs="12">
+        <ion-button (click)="savecommande()" style="width: 100%;height: 1cm;" name="accepter" type="submit"
+          class="submit-button_accepter" color="success">Enregistrer</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

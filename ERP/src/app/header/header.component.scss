@@ -1,0 +1,25 @@
+.status_bar{
+    --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,140,255,1) 0%, rgba(0,212,255,1) 70%);
+}
+
+ion-menu-button{
+  --color:white;
+}
+
+.title_header{
+  font-family:klavika_bold_italic;
+    font-weight: bold;
+    font-size:larger;
+    color: white;
+}
+
+.title_menu{
+  font-family:klavika_bold_italic;
+  font-weight: bold;
+  font-size:larger;
+  color: rgba(0,140,255,1);
+}
+
+.menu_items{
+  font-family:klavika_light_italic;
+}

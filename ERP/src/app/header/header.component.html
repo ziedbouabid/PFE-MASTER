@@ -1,0 +1,76 @@
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar class="status_bar ion-text-center">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="title_header">{{this.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding" id="tt1"> </ion-content>
+</div>
+<ion-menu contentId="main-content" menuId="slidingMenu" id="slidingMenu">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="title_menu">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        <ion-label class="menu_items" (click)="goToWelcome()">
+          Acceuil
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+        <ion-label class="menu_items">
+          Contact
+        </ion-label>
+      </ion-item>
+      <ion-item
+        *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')||(this.userService.userinfos?.role == 'RSCM')||(this.userService.userinfos?.role == 'CHCM')">
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
+        <ion-label class="menu_items" (click)="goToGestionMisson()">
+          Gestion des missions
+        </ion-label>
+      </ion-item>
+      <ion-item
+        *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')">
+        <ion-icon slot="start" name="people-outline"></ion-icon>
+        <ion-label class="menu_items" (click)="goToGestionFournisseurs()">
+          Gestion des fournisseurs
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSRH')||(this.userService.userinfos?.role == 'CHRH')">
+        <ion-icon slot="start" name="people-outline"></ion-icon>
+        <ion-label (click)="goCharcherPLN()" class="menu_items">
+          Gestion des employés 
+        </ion-label>
+      </ion-item>
+      <ion-item
+      *ngIf="(this.userService.userinfos?.role == 'Admin')||(this.userService.userinfos?.role == 'RSPLA')||(this.userService.userinfos?.role == 'CHPLA')||(this.userService.userinfos?.role == 'RSCM')||(this.userService.userinfos?.role == 'CHCM')">
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <ion-label class="menu_items" (click)="goToGestionCommande()">
+        Gestion des commandes
+      </ion-label>
+    </ion-item>
+
+      <ion-item *ngIf="this.userService.userinfos?.role=='Admin'|| this.userService.userinfos?.role=='CHRH' || this.userService.userinfos?.role=='RSRH'">
+        <ion-icon slot="start" name="pencil-outline"></ion-icon>
+        <ion-label class="menu_items" (click)="goToCreateUser()">
+          Creation compte
+        </ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-label class="menu_items" (click)="logout()">
+          Déconnexion
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
