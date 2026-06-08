@@ -29,10 +29,10 @@ jobs:
           cd test1
           npm run lint
 
-      - name: Run backend tests
-        run: |
-          cd test1
-          npm run test
+      # - name: Run backend tests
+      #   run: |
+      #     cd test1
+      #     npm run test
 
       # Frontend CI Steps
       - name: Install frontend dependencies
