@@ -32,15 +32,15 @@ import { SeedModule } from './seed/seed.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST || '127.0.0.1',
+      host: process.env.DB_HOST || 'localhost',
       port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 3306,
       username: process.env.DB_USER || 'zied',
       password: process.env.DB_PASSWORD || 'azertyS20645307',
       database: process.env.DB_NAME || 'my_nestjs_project',
-      entities: [User,mission,fournisseur,produit,certification,competences,Commande,Facture,Conge,Message,Attestation],
-      synchronize: false,
+      entities: [User, mission, fournisseur, produit, certification, competences, Commande, Facture, Conge, Message, Attestation],
+      synchronize: true,
       dropSchema: false,
-      autoLoadEntities: false ,
+      autoLoadEntities: false,
     }),
     UsersModule,
     AuthModule,
@@ -55,11 +55,11 @@ import { SeedModule } from './seed/seed.module';
     CongeModule,
     AttestationModule,
     SeedModule,
-    
+
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
-  constructor(private dataSource: DataSource) {}
+  constructor(private dataSource: DataSource) { }
 }
